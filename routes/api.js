@@ -114,7 +114,7 @@ router.post('/createUser', authUser, async (req, res) => {
 
 });
 
-outer.get('/jobs', (req, res) => {
+router.get('/jobs',  async(req, res) => {
 
     // query paramter filter
     let queryObj = req.query;
@@ -323,10 +323,6 @@ router.post('/job/delete/:id', authUser, async (req, res) => {
     }
 })
 
-
-async function getAllJobsAndFilterIfNecessary(req, res, page) {
-
-}
 
 async function getData(req, res, page) {
     try {
