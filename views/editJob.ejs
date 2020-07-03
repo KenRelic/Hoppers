@@ -43,21 +43,21 @@
         <div class="collapse navbar-collapse w-100" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-lg-4">
-              <a class="nav-link nav-btn" href="/api/auth/dashboard" class="nav-btn">Job Listings</a>
+              <a class="nav-link nav-btn" href="/auth/dashboard" class="nav-btn">Job Listings</a>
               <!-- DASHBOARD SHOULD CONTAIN THE RECIEVED APLICATIONS -->
             </li>
             <li class="nav-item mr-lg-4">
-              <a class="nav-link nav-btn" href="/api/auth/newJob" class="nav-btn">Create job</a>
+              <a class="nav-link nav-btn" href="/auth/newJob" class="nav-btn">Create job</a>
             </li>
             <li class="nav-item mr-lg-4">
-              <a class="nav-link nav-btn" href="/api/auth/user/create" class="nav-btn">Create user</a>
+              <a class="nav-link nav-btn" href="/auth/user/create" class="nav-btn">Create user</a>
             </li>
             <li class="nav-item mr-lg-4">
               <a type="button" data-toggle="modal" class="nav-link nav-btn" data-target="#exampleModalCentered">Change
                 password</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link nav-btn" href="/api/auth/logout" class="">Log out</a>
+              <a class="nav-link nav-btn" href="/auth/logout" class="">Log out</a>
               <!-- TO LOGOUT, SEND THE ID AND REMOVE THE TOKEN FROM THE HEADER. THEN REDIRECT TO /CAREEER PAGE -->
             </li>
           </ul>
@@ -76,7 +76,7 @@
 
   </div>
   <div class=" p-2 bg-white mt-4 form-wrapper">
-    <form action="/api/auth/job/update/<%= job._id %>" method="post" class=" login-form">
+    <form action="/auth/job/update/<%= job._id %>" method="post" class=" login-form">
       <div class="form-elem">
         <div class="input-group mb-4 mr-sm-2 mb-lg-0 position-relative">
           <div class="w-100 h-100"><label class="label" for="pos-browser">Position</label></div>
@@ -186,7 +186,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/api/auth/user/changePassword" method="post">
+        <form action="/auth/user/changePassword" method="post">
           <div class="modal-body">
             <div class="form-elem">
               <div class="input-group mb-4 mr-sm-2 mb-lg-0 position-relative">
@@ -229,7 +229,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/api/auth/user/changePassword" method="post">
+        <form action="/auth/user/changePassword" method="post">
           <div class="modal-body">
             <div class="form-elem">
               <div class="input-group mb-4 mr-sm-2 mb-lg-0 position-relative">

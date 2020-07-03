@@ -31,8 +31,8 @@ app.use(express.json());
 
 
 app.use('/', pagesRoute);
-app.use('/api/auth', adminRoute);
-// app.use('/auth', adminRoute);
+app.use('/auth', adminRoute);
+app.use('/api', adminRoute);
 
 const uri = process.env.DB_CONNECTION;
 mongoose.connect(`${uri}`,{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify:false});

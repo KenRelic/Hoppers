@@ -39,20 +39,20 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-lg-4">
             <li class="nav-item mr-lg-4">
-              <a class="nav-link nav-btn" href="/api/auth/user/create">Create user</a>
+              <a class="nav-link nav-btn" href="/auth/user/create">Create user</a>
             </li>
-            <a class="nav-link nav-btn" href="/api/auth/dashboard">Job Listings</a>
+            <a class="nav-link nav-btn" href="/auth/dashboard">Job Listings</a>
             <!-- DASHBOARD SHOULD CONTAIN THE RECIEVED APLICATIONS -->
             </li>
             <li class="nav-item mr-lg-4">
-              <a class="nav-link nav-btn" href="/api/auth/newJob">Create job</a>
+              <a class="nav-link nav-btn" href="/auth/newJob">Create job</a>
             </li>
             <li class="nav-item mr-lg-4">
               <a type="button" data-toggle="modal" class="nav-link nav-btn" data-target="#exampleModalCentered">Change
                 password</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link nav-btn" href="/api/auth/logout" id="logout-btn">Log out</a>
+              <a class="nav-link nav-btn" href="/auth/logout" id="logout-btn">Log out</a>
               <!-- TO LOGOUT, SEND THE ID AND REMOVE THE TOKEN FROM THE HEADER. THEN REDIRECT TO /CAREEER PAGE -->
             </li>
           </ul>
@@ -144,7 +144,7 @@
 
 
   <div class="jobs-wrapper">
-    <a class="nav-link nav-btn btn-primary" id="add-new-job-btn" href="/api/auth/newJob">+ Create job</a>
+    <a class="nav-link nav-btn btn-primary" id="add-new-job-btn" href="/auth/newJob">+ Create job</a>
     <div class="row font-weight-bold d-none d-md-flex">
       <p class="col-4">Position</p>
       <p class="col-3">Department</p>
@@ -157,8 +157,8 @@
       <p class="col-12 col-md-3 "><%= job.department %></p>
       <p class="col-12 col-md-3"><%= job.location %></p>
       <div class=" col-3 col-md-2 d-flex justify-content-between align-items-center action-btns"><a
-          href="/api/auth/job/edit/<%= job._id %>">EDIT</a>
-        <form class="" action="/api/auth/job/delete/<%= job._id %>" method="post"><input class="" type="submit" value="DELETE">
+          href="/auth/job/edit/<%= job._id %>">EDIT</a>
+        <form class="" action="/auth/job/delete/<%= job._id %>" method="post"><input class="" type="submit" value="DELETE">
         </form>
       </div>
     </div>
@@ -176,7 +176,7 @@
            <span aria-hidden="true">&times;</span>
          </button>
        </div>
-       <form action="/api/auth/user/changePassword" method="post">
+       <form action="/auth/user/changePassword" method="post">
          <div class="modal-body">
            <div class="form-elem">
              <div class="input-group mb-4 mr-sm-2 mb-lg-0 position-relative">
