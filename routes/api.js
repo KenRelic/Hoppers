@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Joi = require('@hapi/joi')
-const { authUser, ifLoggedInDontShowLoginPage, TokenStorage } = require('./verifyToken')
+const { apiAuthUser } = require('./verifyToken')
 require('dotenv/config');
 const router = express.Router();
 const Admin = require('../models/Admin');
-const Job = require('../models/Job');
+const JobOpening = require('../models/JobOpening');
 
 const jwt = require('jsonwebtoken');
 const bycrypt = require('bcrypt');
@@ -60,7 +60,7 @@ router.post('/login', async (req, res) => {
     });
 })
 
-router.post('/createUser', authUser, async (req, res) => {
+router.post('/createUser', apiAuthUser, async (req, res) => {
     const { error } = registerAdminUserValidation(req.body);
     if (error) {
         return res.status(400).json({
@@ -114,7 +114,7 @@ router.post('/createUser', authUser, async (req, res) => {
 
 });
 
-router.get('/jobs',  async(req, res) => {
+router.get('/jobs',  async (req, res) => {
 
     // query paramter filter
     let queryObj = req.query;
@@ -128,30 +128,19 @@ router.get('/jobs',  async(req, res) => {
     }
 
     try {
-        const queriedResult = await Job.find(generatedQuery).sort({ position: 1 });
-        const unfilteredResult = await Job.find().sort({ position: 1 });
-        let deptSet = new Set();
-        let locationSet = new Set();
-
-        unfilteredResult.forEach(job => {
-            locationSet.add(job.location);
-            deptSet.add(job.department);
-        });
-
+        const queriedResult = await JobOpening.find(generatedQuery).sort({ position: 1 });
         return res.status(200).json({
             "status": "ok",
-            "code": 201,
+            "code": 200,
             "messages": ["Job(s) successfully retrieved"],
             "result": {
                 "count": queriedResult.length,
                 "job": {
-                    queriedResult
+                    ...queriedResult
                 }
             }
         })
-        
-        
-        (page, { jobs: queriedResult, locations: locationSet, departments: deptSet, queryObj });
+
     } catch (err) {
         return res.status(401).json({
             "status": "failed",
@@ -161,7 +150,7 @@ router.get('/jobs',  async(req, res) => {
     }
 });
 
-router.post('/job/add', authUser, async (req, res) => {
+router.post('/job/add', apiAuthUser, async (req, res) => {
     const { position, department, location, role, description, role_requirement, perks } = req.body;
     let descObj = {};
     let roleRequirementObj = {};
@@ -209,7 +198,7 @@ router.post('/job/add', authUser, async (req, res) => {
     //get the person that creted the job
     // const jobCreator = res.header
     // create new job opening
-    const createdJob = new Job(jobToBeCreated)
+    const createdJob = new JobOpening(jobToBeCreated)
 
     try {
         const savedJob = await createdJob.save();
@@ -234,9 +223,9 @@ router.post('/job/add', authUser, async (req, res) => {
 })
 
 
-router.post('/job/update/:_id', authUser, async (req, res) => {
+router.post('/job/update/:_id', apiAuthUser, async (req, res) => {
     try {
-        const result = await Job.findOne({ _id: req.params._id });
+        const result = await JobOpening.findOne({ _id: req.params._id });
         if (!result) {
             return res.status(400).json({
                 "status": "failed",
@@ -265,7 +254,7 @@ router.post('/job/update/:_id', authUser, async (req, res) => {
             }
         })
 
-        const updatedJob = await Job.updateOne(
+        const updatedJob = await JobOpening.updateOne(
             result,
             {
                 position: position.trim(),
@@ -299,11 +288,11 @@ router.post('/job/update/:_id', authUser, async (req, res) => {
 })
 
 
-router.post('/job/delete/:id', authUser, async (req, res) => {
+router.post('/job/delete/:id', apiAuthUser, async (req, res) => {
     // code to delete one job
     try {
         const idOfJob = req.params.id;
-        const deletedJob = await Job.findByIdAndDelete({ _id: idOfJob });
+        const deletedJob = await JobOpening.findByIdAndDelete({ _id: idOfJob });
         return res.status(201).json({
             "status": "ok",
             "code": 201,
@@ -326,7 +315,7 @@ router.post('/job/delete/:id', authUser, async (req, res) => {
 
 async function getData(req, res, page) {
     try {
-        const result = await Job.find({}).sort({ position: 1 });
+        const result = await JobOpening.find({}).sort({ position: 1 });
         return res.render(page, { jobs: result });
     } catch (err) {
         return res.status(404).json({ status: "404", message: "Not found" });

@@ -52,6 +52,30 @@ function authUser(req, res, next) {
 
 }
 
+function apiAuthUser(req,res,next){
+   const token = req.header('auth-token');
+    if (!token) {
+      
+        return res.status(401).json({
+            "status": "failed",
+            "code": 401,
+            "messages": ["Access denied", "You must be logged in to view this page"]
+        });
+    }
+
+    try {
+        const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+        req.user = verified;
+        next();
+
+    } catch (err) {       
+        return res.status(400).json({
+            "status": "failed",
+            "code": 400,
+            "messages": ["Bad request", "Token is invalid"]
+        });
+    }
+}
 function ifLoggedInDontShowLoginPage(req, res, next) {
     const tokenStorage = new TokenStorage();
     const token = tokenStorage.get();
@@ -64,4 +88,4 @@ function ifLoggedInDontShowLoginPage(req, res, next) {
 
 
 
-module.exports = { authUser, ifLoggedInDontShowLoginPage, TokenStorage }
+module.exports = { authUser, apiAuthUser, ifLoggedInDontShowLoginPage, TokenStorage }
