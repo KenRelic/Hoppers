@@ -111,16 +111,8 @@ router.post('/createUser', authUser, async (req, res) => {
 
     try {
         const savedUser = await adminUser.save();
-        return res.status(201).json({
-            "status": "ok",
-            "code": 201,
-            "messages": ["Created", "User created successfully"],
-            "result": {
-                "user": {
-                    "id": savedUser._id,
-                }
-            }
-        })
+        return res.redirect('/auth/adminCreated')
+
     } catch (err) {
         return res.status(500).json({
             "status": "failed",
@@ -326,16 +318,7 @@ router.post('/job/delete/:id', authUser, async (req, res) => {
     try {
         const idOfJob = req.params._id;
         const deletedJob = await JobOpening.findByIdAndDelete({ _id: idOfJob });
-        return res.status(201).json({
-            "status": "ok",
-            "code": 201,
-            "messages": ["Created", "Job opening deleted successfully"],
-            "result": {
-                "job": {
-                    "id": deletedJob._id,
-                }
-            }
-        })
+        res.render('deletedJob', { id: deletedJob._id })
     } catch (err) {
         return res.status(401).json({
             "status": "failed",
@@ -389,9 +372,6 @@ async function getData(req, res, page) {
         return res.status(404).json({ status: "404", message: "Not found" });
     }
 }
-
-
-
 
 router.get('/jobCreated', authUser, (req, res) => {
     res.render('jobCreated');

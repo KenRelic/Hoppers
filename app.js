@@ -13,7 +13,7 @@ const app = express();
 // IMPORT ROUTES
 const pagesRoute = require('./routes/pages');
 const adminRoute = require('./routes/auth');
-
+const apiRoute = require('./routes/api');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,7 +32,7 @@ app.use(express.json());
 
 app.use('/', pagesRoute);
 app.use('/auth', adminRoute);
-app.use('/api', adminRoute);
+app.use('/api', apiRoute);
 
 const uri = process.env.DB_CONNECTION;
 mongoose.connect(`${uri}`,{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify:false});

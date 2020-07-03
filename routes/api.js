@@ -5,16 +5,12 @@ const { authUser, ifLoggedInDontShowLoginPage, TokenStorage } = require('./verif
 require('dotenv/config');
 const router = express.Router();
 const Admin = require('../models/Admin');
-const JobOpening = require('../models/JobOpening');
+const Job = require('../models/Job');
 
 const jwt = require('jsonwebtoken');
 const bycrypt = require('bcrypt');
 
 const { createNewJobValidation, registerAdminUserValidation, adminLoginValidation } = require('../authorization');
-
-router.get('/login', ifLoggedInDontShowLoginPage, async (req, res) => {
-    res.render('login')
-})
 
 router.post('/login', async (req, res) => {
     const { error } = adminLoginValidation(req.body);
@@ -24,7 +20,6 @@ router.post('/login', async (req, res) => {
             "code": 400,
             "messages": ["Bad request", error.details[0].message]
         });
-
     }
 
     // check if email doesnt exist
@@ -49,32 +44,20 @@ router.post('/login', async (req, res) => {
 
     // create token
     const token = jwt.sign({ _id: user._id, fullname: user.fullname }, process.env.TOKEN_SECRET, { expiresIn: '1d' });
-    const tokenStorage = new TokenStorage();
-    tokenStorage.store(token);
-    console.log(tokenStorage.get())
+
     // add it to the header
-    res.header('auth-token', token).render('dashboard', { authData: user });
-})
-
-router.get('/dashboard', authUser, (req, res) => {
-    const tokenStorage = new TokenStorage();
-    let token = tokenStorage.get();
-    jwt.verify(token, process.env.TOKEN_SECRET, (err, authData) => {
-        if (err) {
-            return res.status(401).json({
-                "status": "failed",
-                "code": 401,
-                "messages": ["Access denied", "You must be logged in to view this page"]
-            });
-        } else {
-            res.render('dashboard', { authData })
+    res.header('auth-token', token).json({
+        "status": "ok",
+        "code": 201,
+        "messages": ["Login successful"],
+        "result": {
+            "user": {
+                _id: user._id,
+                email: user.email,
+                token: token
+            }
         }
-    })
-
-});
-
-router.get('/user/create', authUser, async (req, res) => {
-    res.render('createUser')
+    });
 })
 
 router.post('/createUser', authUser, async (req, res) => {
@@ -132,15 +115,6 @@ router.post('/createUser', authUser, async (req, res) => {
 });
 
 
-router.get('/adminJobsList',authUser, async (req, res) => {
-    getAllJobsAndFilterIfNecessary(req, res, 'adminJobsList')
-})
-
-router.get('/newJob', authUser, (req, res) => {
-    getAllJobsAndFilterIfNecessary(req, res, 'newJob')
-    // res.render('newJob');
-})
-
 router.post('/job/add', authUser, async (req, res) => {
     const { position, department, location, role, description, role_requirement, perks } = req.body;
     let descObj = {};
@@ -157,11 +131,14 @@ router.post('/job/add', authUser, async (req, res) => {
             roleRequirementObj[`${Object.keys(roleRequirementObj).length + 1}`] = roleReq.replace(/\r\n/gi, "").trim();
         }
     })
-    perks.split(/--/gi).forEach(perk => {
-        if (perk.trim() !== "") {
-            perksObj[`${Object.keys(perksObj).length + 1}`] = perk.replace(/\r\n/gi, "").trim();
-        }
-    })
+    if (perks) {
+        perks.split(/--/gi).forEach(perk => {
+            if (perk.trim() !== "") {
+                perksObj[`${Object.keys(perksObj).length + 1}`] = perk.replace(/\r\n/gi, "").trim();
+            }
+        })
+    }
+
 
     const jobToBeCreated = {
         position: position.trim(),
@@ -186,35 +163,20 @@ router.post('/job/add', authUser, async (req, res) => {
     //get the person that creted the job
     // const jobCreator = res.header
     // create new job opening
-    const createdJob = new JobOpening(jobToBeCreated)
-
-    // Check if there is an exact job in the DB;
-    const jobIsExactIndDB = await JobOpening.findOne(createdJob);
-    if (jobIsExactIndDB) {
-        return res.status(400).json({
-            "status": "failed",
-            "code": 400,
-            "messages": ["Bad request", "This exact job opening is already added"]
-        });
-    }
+    const createdJob = new Job(jobToBeCreated)
 
     try {
         const savedJob = await createdJob.save();
-        console.log({
+
+        return res.status(201).json({
             "status": "ok",
             "code": 201,
-            "messages": ["Created", "Job opening successfully created"],
-            "data": { createdJob }
+            "messages": ["Created", "Job opening created successfully"],
+            "result": {
+                "job": { createdJob }
+            }
         })
-        return res.redirect('/api/auth/jobCreated');
-        // return res.status(201).json({
-        //     "status": "ok",
-        //     "code": 201,
-        //     "messages": ["Created", "Job opening created successfully"],
-        //     "result": {
-        //         "job": { createdJob }
-        //     }
-        // })
+
     } catch (err) {
         return res.status(500).json({
             "status": "failed",
@@ -225,33 +187,10 @@ router.post('/job/add', authUser, async (req, res) => {
 
 })
 
-router.get('/job/edit/:_id', authUser, async (req, res) => {
-    try {
-        console.log({ _id: req.params._id })
-        const result = await JobOpening.findOne({ _id: req.params._id });
-        const jobs = await JobOpening.find().sort({ position: 1 });
-        let deptSet = new Set();
-        let locationSet = new Set();
-
-        jobs.forEach(job => {
-            locationSet.add(job.location);
-            deptSet.add(job.department);
-        });
-        return res.render('editJob', { job: result, locations: locationSet, departments: deptSet });
-
-    } catch (err) {
-        return res.status(401).json({
-            "status": "failed",
-            "code": 401,
-            "messages": ["Internal server error", "Your request was not completed."]
-        });
-
-    }
-})
 
 router.post('/job/update/:_id', authUser, async (req, res) => {
     try {
-        const result = await JobOpening.findOne({ _id: req.params._id });
+        const result = await Job.findOne({ _id: req.params._id });
         if (!result) {
             return res.status(400).json({
                 "status": "failed",
@@ -280,7 +219,7 @@ router.post('/job/update/:_id', authUser, async (req, res) => {
             }
         })
 
-        const updatedJob = await JobOpening.updateOne(
+        const updatedJob = await Job.updateOne(
             result,
             {
                 position: position.trim(),
@@ -294,15 +233,14 @@ router.post('/job/update/:_id', authUser, async (req, res) => {
             { new: true }
         )
 
-        console.log({
+        return res.status(201).json({
             "status": "ok",
             "code": 201,
-            "messages": ["updated", "Job successfullly updated"],
-            "data": {
-                // updatedJob
+            "messages": ["Job opening has been updated successfully"],
+            "result": {
+                "job": { updatedJob }
             }
-        })
-        return res.redirect('/api/auth/adminJobsList');
+        });
 
     } catch (err) {
         return res.status(500).json({
@@ -319,7 +257,7 @@ router.post('/job/delete/:id', authUser, async (req, res) => {
     // code to delete one job
     try {
         const idOfJob = req.params._id;
-        const deletedJob = await JobOpening.findByIdAndDelete({ _id: idOfJob });
+        const deletedJob = await Job.findByIdAndDelete({ _id: idOfJob });
         return res.status(201).json({
             "status": "ok",
             "code": 201,
@@ -354,8 +292,8 @@ async function getAllJobsAndFilterIfNecessary(req, res, page) {
     }
 
     try {
-        const queriedResult = await JobOpening.find(generatedQuery).sort({ position: 1 });
-        const unfilteredResult = await JobOpening.find().sort({ position: 1 });
+        const queriedResult = await Job.find(generatedQuery).sort({ position: 1 });
+        const unfilteredResult = await Job.find().sort({ position: 1 });
         let deptSet = new Set();
         let locationSet = new Set();
 
@@ -377,28 +315,12 @@ async function getAllJobsAndFilterIfNecessary(req, res, page) {
 
 async function getData(req, res, page) {
     try {
-        const result = await JobOpening.find({}).sort({ position: 1 });
+        const result = await Job.find({}).sort({ position: 1 });
         return res.render(page, { jobs: result });
     } catch (err) {
         return res.status(404).json({ status: "404", message: "Not found" });
     }
 }
-
-
-
-
-router.get('/jobCreated', authUser, (req, res) => {
-    res.render('jobCreated');
-})
-
-
-
-
-
-
-
-
-
 
 
 
