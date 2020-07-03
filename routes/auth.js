@@ -316,7 +316,7 @@ router.post('/job/update/:_id', authUser, async (req, res) => {
 router.post('/job/delete/:id', authUser, async (req, res) => {
     // code to delete one job
     try {
-        const idOfJob = req.params._id;
+        const idOfJob = req.params.id;
         const deletedJob = await JobOpening.findByIdAndDelete({ _id: idOfJob });
         res.render('deletedJob', { id: deletedJob._id })
     } catch (err) {

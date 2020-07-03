@@ -114,6 +114,9 @@ router.post('/createUser', authUser, async (req, res) => {
 
 });
 
+outer.get('/jobs', (req, res) => {
+    getD(req, res, 'careerList');
+});
 
 router.post('/job/add', authUser, async (req, res) => {
     const { position, department, location, role, description, role_requirement, perks } = req.body;
