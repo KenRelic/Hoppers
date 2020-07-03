@@ -115,7 +115,50 @@ router.post('/createUser', authUser, async (req, res) => {
 });
 
 outer.get('/jobs', (req, res) => {
-    getD(req, res, 'careerList');
+
+    // query paramter filter
+    let queryObj = req.query;
+    const keys = Object.keys(queryObj);
+    const values = Object.values(queryObj);
+    let generatedQuery = {};
+
+
+    for (let i = 0; i < keys.length; i += 1) {
+        generatedQuery[`${keys[i]}`] = { $regex: new RegExp(values[i], 'i') };
+    }
+
+    try {
+        const queriedResult = await Job.find(generatedQuery).sort({ position: 1 });
+        const unfilteredResult = await Job.find().sort({ position: 1 });
+        let deptSet = new Set();
+        let locationSet = new Set();
+
+        unfilteredResult.forEach(job => {
+            locationSet.add(job.location);
+            deptSet.add(job.department);
+        });
+
+        return res.status(200).json({
+            "status": "ok",
+            "code": 201,
+            "messages": ["Job(s) successfully retrieved"],
+            "result": {
+                "count": queriedResult.length,
+                "job": {
+                    queriedResult
+                }
+            }
+        })
+        
+        
+        (page, { jobs: queriedResult, locations: locationSet, departments: deptSet, queryObj });
+    } catch (err) {
+        return res.status(401).json({
+            "status": "failed",
+            "code": 401,
+            "messages": ["Internal server error", "Your request was not completed."]
+        });
+    }
 });
 
 router.post('/job/add', authUser, async (req, res) => {
@@ -259,7 +302,7 @@ router.post('/job/update/:_id', authUser, async (req, res) => {
 router.post('/job/delete/:id', authUser, async (req, res) => {
     // code to delete one job
     try {
-        const idOfJob = req.params._id;
+        const idOfJob = req.params.id;
         const deletedJob = await Job.findByIdAndDelete({ _id: idOfJob });
         return res.status(201).json({
             "status": "ok",
@@ -283,37 +326,6 @@ router.post('/job/delete/:id', authUser, async (req, res) => {
 
 async function getAllJobsAndFilterIfNecessary(req, res, page) {
 
-    // query paramter filter
-    let queryObj = req.query;
-    const keys = Object.keys(queryObj);
-    const values = Object.values(queryObj);
-    let generatedQuery = {};
-
-
-    for (let i = 0; i < keys.length; i += 1) {
-        generatedQuery[`${keys[i]}`] = { $regex: new RegExp(values[i], 'i') };
-    }
-
-    try {
-        const queriedResult = await Job.find(generatedQuery).sort({ position: 1 });
-        const unfilteredResult = await Job.find().sort({ position: 1 });
-        let deptSet = new Set();
-        let locationSet = new Set();
-
-        unfilteredResult.forEach(job => {
-            locationSet.add(job.location);
-            deptSet.add(job.department);
-        });
-        // console.log({ jobs: queriedResult, locations: locationSet, departments: deptSet })
-
-        return res.render(page, { jobs: queriedResult, locations: locationSet, departments: deptSet, queryObj });
-    } catch (err) {
-        return res.status(401).json({
-            "status": "failed",
-            "code": 401,
-            "messages": ["Internal server error", "Your request was not completed."]
-        });
-    }
 }
 
 async function getData(req, res, page) {
