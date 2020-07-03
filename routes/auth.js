@@ -132,7 +132,7 @@ router.post('/createUser', authUser, async (req, res) => {
 });
 
 
-router.get('/adminJobsList',authUser, async (req, res) => {
+router.get('/adminJobsList', authUser, async (req, res) => {
     getAllJobsAndFilterIfNecessary(req, res, 'adminJobsList')
 })
 
@@ -157,11 +157,14 @@ router.post('/job/add', authUser, async (req, res) => {
             roleRequirementObj[`${Object.keys(roleRequirementObj).length + 1}`] = roleReq.replace(/\r\n/gi, "").trim();
         }
     })
-    perks.split(/--/gi).forEach(perk => {
-        if (perk.trim() !== "") {
-            perksObj[`${Object.keys(perksObj).length + 1}`] = perk.replace(/\r\n/gi, "").trim();
-        }
-    })
+    if (perks) {
+        perks.split(/--/gi).forEach(perk => {
+            if (perk.trim() !== "") {
+                perksObj[`${Object.keys(perksObj).length + 1}`] = perk.replace(/\r\n/gi, "").trim();
+            }
+        })
+    }
+
 
     const jobToBeCreated = {
         position: position.trim(),
@@ -206,7 +209,7 @@ router.post('/job/add', authUser, async (req, res) => {
             "messages": ["Created", "Job opening successfully created"],
             "data": { createdJob }
         })
-        return res.redirect('/api/auth/jobCreated');
+        return res.redirect('/auth/jobCreated');
         // return res.status(201).json({
         //     "status": "ok",
         //     "code": 201,
@@ -302,7 +305,7 @@ router.post('/job/update/:_id', authUser, async (req, res) => {
                 // updatedJob
             }
         })
-        return res.redirect('/api/auth/adminJobsList');
+        return res.redirect('/auth/adminJobsList');
 
     } catch (err) {
         return res.status(500).json({
