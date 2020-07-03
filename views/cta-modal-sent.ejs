@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Hopper</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<script type="text/javascript" src="/bootstrap/jquery.min.js"></script>
+	<script type="text/javascript" src="/bootstrap/popper.min.js"></script>
+	<script type="text/javascript" src="/bootstrap/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/css/admin.css">
+</head>
+
+<body>
+
+	<div id="modal-wrapper">
+		<span type="button" id="close-modal-btn" data-dismiss="alert">&times;</span>
+		<div id="modal">
+			<div></div>
+			<div id="confirmation-msg-section">
+				<img src="https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029012/Team-Mars/done_s3xepq.png"
+					alt="done-icon" class="done-icon">
+				<h4 class="">We've sent a download link to <span id="phone-number-sent-to">+<%= number %></span>
+				</h4>
+				<p class="">Trouble receiving our message? Just visit hopper.com from your mobile devide to
+					download the app directly.</p>
+				<button type="submit" class="btn btn-primary" id="close-btn-2" onclick="return closeModal()">Close</button>
+			</div>
+			<div>
+				<div class="download-links">
+					<a href="#"><img
+							src="https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593028930/Team-Mars/appstore_g43k6v.png"
+							class="appstore-img"></a>
+					<a href="#"><img
+							src="https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029040/Team-Mars/playstore_ksjmeo.png"
+							class="playstore-img"></a>
+				</div>
+				<div>
+					<p>By clicking “Send Link”, you agree to the<span><a href='/termsofservice'>
+								Terms of Service </a></span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		const closeModalBtn = document.getElementById("close-modal-btn");
+		const closeBtn2 = document.getElementById("close-btn-2");
+
+		closeModalBtn.addEventListener('click', goBack);
+		closeBtn2.addEventListener('click', goBack);
+
+		function goBack() {
+			window.history.go(-2);			
+		}
+
+	</script>
+
+
+</body>
+
+</html>

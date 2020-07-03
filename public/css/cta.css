@@ -1,0 +1,135 @@
+@font-face{
+    font-family: ProximaNova;
+    src: url("../fonts/ProximaNova.otf");
+}
+
+
+* {
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+
+.container, footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+	width: 381px;
+	height: 241px;
+	margin-top: 180px;
+	font-family: Proxima Nova, Raleway;
+	text-align: center;
+}
+
+h2 {
+	font-size: 26px;
+	line-height: 27px;
+	color: #505050;
+}
+
+.content p {
+	font-size: 15px;
+	line-height: 22px;
+    color: #878787;
+	margin-top: 15px;
+}
+
+.link {
+	color: #df374b;
+}
+
+.btn {
+	font-size: 14px;
+	line-height: 20px;
+	text-align: center;
+	width: 226px;
+	height: 38px;
+	border-radius: 8px;
+	margin: 10% 0 10% 0;
+    background-color: #01aae4;
+	color: #ffffff;
+    border: none;
+	box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+.btn:hover{
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #01AAE4;
+	box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.apple{
+	display:flex;
+	align-items: center;
+	margin:5px;
+
+}
+
+
+.play{
+	display: flex;
+	align-items: center;
+	margin:5px;
+	
+}
+.close-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+}
+.close {
+	width: 14px;
+	height: 14px;
+}
+
+.vector {
+	width: 28px;
+	height: 21px;
+   
+    margin: 20px 0;
+}
+
+.available {
+	font-size: 6px;
+	text-transform: uppercase;
+	display: inline;
+}
+
+
+footer {
+    margin-top: 50px;
+}
+#terms{
+	position: absolute;
+	left: 37.57%;
+	right: 37.64%;
+	top: 93.25%;
+	bottom: 4.38%;
+
+	
+	
+	font-family: Proxima Nova;
+	font-size: 14px;
+	line-height: 19px;
+	text-align: center;
+	
+	color: #AAAAAA;
+}
+#link{
+	color: #01AAE4;
+}
+#link:hover{
+	color: #0188B6;
+}
+.download{
+	top: 700px;/*the top margin is not effective*/
+}
+/*there is an opaque text by the side that i can't see on figma
+The apple logo on exporting from figma(exported 6 times) is empty on my screen,there is no export option for playstore logo
+Kindly help fix that line*/

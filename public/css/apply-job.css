@@ -1,0 +1,228 @@
+
+@font-face {
+	font-family: proximanova;
+	src: url(../fonts/proximanova);
+}
+
+body {
+	overflow-x: hidden;
+	width: 100%
+}
+
+
+header .row {
+	background-color: #FFFFFF;
+	
+}
+
+.menu-icon {
+  display: none;
+  
+}
+
+.help-icon {
+	display: none;
+
+}
+
+.hopper-logo {
+ 	margin-top: 50px;
+ 	margin-left: 20px;
+
+}
+
+.bunny-img {
+	margin-top: 38px;
+	margin-left: 40px;
+}
+
+
+header h2 {
+	font-family: Quicksand;
+	font-size: 42px;
+	line-height: 49px;
+	color: #505050;
+	font-weight: bold;
+
+	margin-left: 20px;
+	margin-top: 60px;
+}
+
+header h3 {
+	font-family: Quicksand;
+	font-size: 24px;
+	line-height: 32px;
+	color: #878787;
+	font-weight: normal;
+
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+
+
+section .row {
+	background-color: #F9F9F9;
+}
+
+.application-section h3 {
+	font-family: Quicksand;
+	font-size: 19px;
+	color: dimgrey;
+	font-weight: bold;
+	margin-top: 45px;
+	margin-left: 134px;
+
+}
+
+input[type='file'] {
+	display: none;
+}
+
+form {
+	margin-left: 138px;
+	padding-top: 60px;
+	border-bottom: 1px solid gainsboro;
+	padding-bottom: 55px;
+}
+
+
+
+.text {
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	color: dimgray;
+}
+
+.red {
+	color: red;
+}
+
+.resume {
+	background-color: #ebebe0;
+	font-family: Quicksand;
+	font-weight: bold;
+	font-size: 14px;
+	color: gray;
+	border-radius:3px;
+	width: 30%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+
+
+	margin-left: 150px;
+}
+
+.attach-file i {
+	padding-right: 8px;
+}
+
+.resume:hover {
+	cursor: pointer;
+	background-color: gainsboro;
+}
+
+.margin {
+	margin-top: 40px;
+}
+
+.linkedin-btn {
+	font-family: Quicksand;
+	font-weight: bold;
+	font-size: 15px;
+	color: gray;
+	background-color: #ebebe0;
+	border: none;
+	border-radius: 3px;
+	margin-left: 120px;
+	width: 35%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+button:focus {
+	outline: none;
+}
+
+.linkedin-btn:hover {
+	cursor: pointer;
+	background-color: gainsboro;
+}
+
+.fa-linkedin {
+	color : #0e76a8;
+	background-color: white;
+	margin-right: 15px;
+}
+
+.profile-text {
+	position: absolute;
+	left: 670px;
+	font-family: Quicksand;
+	color: gray;
+	font-size: 11px;
+	margin-top: 3px;
+	font-weight: bold;
+}
+
+.input-box {
+	padding: 10px 155px;
+	border: 1px solid gainsboro;
+	border-radius: 4px;
+}
+
+.input-box:focus {
+	outline: none;
+}
+
+.input-name {
+	margin-left: 150.5px;
+
+}
+
+.input-email {
+	margin-left: 180px;
+}
+
+.input-phone {
+	margin-left: 182px;
+
+}
+
+.input-company {
+
+	margin-left: 100px;
+
+}
+
+.submit-btn {
+	background-color: #01AAE4;
+	padding: 10px 0px;
+	border-radius: 8px;
+	margin-left: 234px;
+	margin-top: 70px;
+	border: none;
+	color: white;
+	font-family: Quicksand;
+	font-size: 14px;
+	width: 481px;
+	font-style: bold;
+
+}
+
+.submit-btn:hover {
+	cursor: pointer;
+	background-color: #0066ff 
+}
+
+.submit-btn:active {
+	border: none;
+}
+
+.submit-btn:focus {
+	outline: none;
+}
+
+

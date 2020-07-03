@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <!-- Font awesome -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+  <title>Hoppers Admin | Job List</title>
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="icon" href="/images/careerListimages/favicon.ico">
+
+</head>
+
+<body>
+  <!----------           Header Section            --------->
+  <header class="container header-container">
+    <!-- <header class="masthead position-relative"> -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="nav-bar">
+      <div class="container p-2 px-lg-1">
+        <div class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive"
+          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" id="menu-icon">
+          <div class="icon"></div>
+        </div>
+        <a class="navbar-brand" href="/"><img src="/icons/logo.svg" alt="hopper logo" /></a>
+
+        <div class="collapse navbar-collapse w-100" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-lg-4">
+            <li class="nav-item mr-lg-4">
+              <a class="nav-link nav-btn" href="/api/auth/user/create">Create user</a>
+            </li>
+            <a class="nav-link nav-btn" href="/api/auth/dashboard">Job Listings</a>
+            <!-- DASHBOARD SHOULD CONTAIN THE RECIEVED APLICATIONS -->
+            </li>
+            <li class="nav-item mr-lg-4">
+              <a class="nav-link nav-btn" href="/api/auth/newJob">Create job</a>
+            </li>
+            <li class="nav-item mr-lg-4">
+              <a type="button" data-toggle="modal" class="nav-link nav-btn" data-target="#exampleModalCentered">Change
+                password</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link nav-btn" href="/api/auth/logout" id="logout-btn">Log out</a>
+              <!-- TO LOGOUT, SEND THE ID AND REMOVE THE TOKEN FROM THE HEADER. THEN REDIRECT TO /CAREEER PAGE -->
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+
+  <div class="landing-banner container-fluid d-flex  justify-content-center align-items-center p-4">
+    <div class="col-lg-7 col-sm-12 text-sm-center text-lg-left">
+      <h1>Jobs List</h1>
+      <p>Add, edit and delete expired jobs</p>
+    </div>
+    <div class="d-sm-none d-lg-flex col-lg-5 col-sm-0 banner-img" style="z-index: 0;">
+    </div>
+  </div>
+
+  <!--------     Filters Section   ----------->
+
+  <div class="query-wrapper mt-4">
+    <div class="row justify-content-around p-2 mb-4 shadow bg-white align-items-center rounded-lg"
+      style="padding: 2em 1em !important;">
+
+      <form action="/career" method="get" class="row justify-content-around align-items-center"
+      class="query-form" name="query-form">
+
+      <div class="col-12 col-md-4 col-lg-3 mb-4 mb-lg-0">
+        <div class="input-group mr-sm-2 mb-lg-0 position-relative">
+          <div class="w-100 h-100"><span class="label">Position</span></div>
+          <input type="text" name="position" class="form-control rounded-lg query-input" id="position-input-el"
+            placeholder="Search Position" value="<%= queryObj.position == undefined?  '' : queryObj.position%>">
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-transparent border-0"><i class="fa fa-search" id="pos-serach-btn"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-3 mb-4 mb-lg-0">
+        <div class="input-group  mr-sm-2 mb-lg-0 position-relative">
+          <div class="w-100 h-100"><span class="label">Department</span></div>
+          <input type="text" name="department" class="form-control rounded-lg query-input" id="dept-input-el"
+            placeholder="Department" value="<%= queryObj.department == undefined?  '' : queryObj.department%>">
+          <div class="filter-options" id="dept-options">
+            <ul>
+              <li>All departments</li>
+              <% departments.forEach((dept)=>{ %>
+              <li><%= dept %></li>
+              <% }) %>
+            </ul>
+          </div>
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-transparent border-0"><i class="fa fa-caret-down toggle-option-list-btn"
+                id="dept-dropdown-btn"></i></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-3 mb-4 mb-lg-0">
+        <div class="input-group mr-sm-2 mb-lg-0 position-relative">
+          <div class="w-100 h-100"><span class="label">Location</span></div>
+          <input type="text" name="location" class="form-control rounded-lg query-input" id="location-input-el"
+            placeholder="Location" value="<%= queryObj.location == undefined?  '' : queryObj.location%>">
+          <div class="filter-options" id="city-options">
+            <ul>
+              <li>All locations</li>
+              <% locations.forEach((location)=>{ %>
+              <li><%= location %></li>
+              <% }) %>
+            </ul>
+          </div>
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-transparent border-0"><i class="fa fa-caret-down toggle-option-list-btn"
+                id="city-dropdown-btn"></i></div>
+          </div>
+
+        </div>
+      </div>
+      <div class="filters-item col-12 col-lg-3 mt-2 text-center">
+        <p class="filters-NOborder-btn text-center"><%= jobs.length %> available position(s)</p>
+      </div>
+    </form>
+
+    </div>
+  </div>
+
+
+  <div class="jobs-wrapper">
+    <a class="nav-link nav-btn btn-primary" id="add-new-job-btn" href="/api/auth/newJob">+ Create job</a>
+    <div class="row font-weight-bold d-none d-md-flex">
+      <p class="col-4">Position</p>
+      <p class="col-3">Department</p>
+      <p class="col-3">Location</p>
+      <p class="col-2">Actions</p>
+    </div>
+    <% jobs.forEach((job)=>{ %>
+    <div class="row py-3 job-row">
+      <p class="col-12 col-md-4"><%= job.position %></p>
+      <p class="col-12 col-md-3 "><%= job.department %></p>
+      <p class="col-12 col-md-3"><%= job.location %></p>
+      <div class=" col-3 col-md-2 d-flex justify-content-between align-items-center action-btns"><a
+          href="/api/auth/job/edit/<%= job._id %>">EDIT</a>
+        <form class="" action="/api/auth/job/delete/<%= job._id %>" method="post"><input class="" type="submit" value="DELETE">
+        </form>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+
+   <!-- Modal -->
+   <div class="modal" id="exampleModalCentered" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredLabel"
+   aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalCenteredLabel">Change password</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <form action="/api/auth/user/changePassword" method="post">
+         <div class="modal-body">
+           <div class="form-elem">
+             <div class="input-group mb-4 mr-sm-2 mb-lg-0 position-relative">
+               <div class="w-100 h-100"><span class="label">Old password</span></div>
+               <input type="password" name="old_password" class="form-control rounded-lg p-4">
+             </div>
+           </div>
+           <div class="form-elem">
+             <div class="input-group mb-4 mr-sm-2 mb-lg-0 position-relative">
+               <div class="w-100 h-100"><span class="label">New password</span></div>
+               <input type="password" name="new_password" class="form-control rounded-lg p-4">
+             </div>
+           </div>
+           <div class="form-elem">
+             <div class="input-group mb-4 mr-sm-2 mb-lg-0 position-relative">
+               <div class="w-100 h-100"><span class="label">Confirm New password</span></div>
+               <input type="password" name="confirm_password" class="form-control rounded-lg p-4">
+             </div>
+           </div>
+
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-dismiss="modal"
+             style="background-color: #e55454 !important;border:none">Close</button>
+           <button type="submit" class="btn btn-primary">Update password</button>
+         </div>
+       </form>
+
+     </div>
+   </div>
+ </div>
+
+  <script src="/js/careerList.js"></script>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+ // GLOBAL VARIABLES --------------------------------------------------------------------------------------------//
+ const closeModalBtn = document.getElementById("close-modal-btn");
+    const cornfirmationMsgSection = document.getElementById("confirmation-msg-section");
+    const sendAppSection = document.getElementById("send-app-section");
+    let inputBox = document.getElementById("phone_number_input_box");
+    let phoneNumberSentToPlaceholder = document.getElementById("phone-number-sent-to");
+    const displaySendAppModalBtn = document.getElementById("display-modal-btn");
+    let localStorage = window.localStorage;
+
+  
+    // Validate  phone nummber input
+    function validateInput() {
+      let inputBox = document.getElementById("phone_number_input_box");
+      let testResult = (/[0-9]{11}/).test(inputBox.value);
+      if (!testResult) {
+        document.getElementById("error-msg").style.visibility = "visible";
+        return false;
+      }
+      document.getElementById("error-msg").style.visibility = "hidden";
+      localStorage.setItem("number", inputBox.value);
+      return showConfirmationModal(); //show the confirmation modal
+    }
+    
+    // TOGGLE OPTION LIST
+    let closeOptionListBtns = document.querySelectorAll('.toggle-option-list-btn');
+    closeOptionListBtns.forEach((btn) => {
+      btn.addEventListener('click', dropOptionList);
+    })
+
+    function dropOptionList() {
+      // get the option list of the click btn//
+      let optionList = this.parentElement.parentElement.previousElementSibling;
+      optionList.style.display = "block";
+      return closeOptionListBtns.forEach((btn) => {
+        btn.removeEventListener('click', dropOptionList);
+        btn.addEventListener('click', closeOptionList);
+      })
+    }
+
+    function closeOptionList() {
+      // get the option list of the click btn//
+      let optionList = this.parentElement.parentElement.previousElementSibling;
+      optionList.style.display = "none";
+      return closeOptionListBtns.forEach((btn) => {
+        btn.removeEventListener('click', closeOptionList);
+        btn.addEventListener('click', dropOptionList);
+      })
+    }
+
+    window.onclick = function(event){
+      
+      let x = event.target;
+      if(x.className !== 'fa fa-caret-down toggle-option-list-btn'){
+        closeOptionListBtns[0].parentElement.parentElement.previousElementSibling.style.display = 'none';
+      closeOptionListBtns[1].parentElement.parentElement.previousElementSibling.style.display = 'none';
+      }
+    }
+
+    // close option list and pass the OPTION VALUE INTO THE INPUT BOX-----------------------------
+    const deptInputBox = document.getElementById('');
+    const cityInputBox = document.getElementById('');
+    const positionInputBox = document.getElementById('');
+    let optionValues = document.querySelectorAll('.filter-options ul li');
+    optionValues.forEach(option => {
+      option.addEventListener('click', insertSelectedOptionIntoInputBox);
+    })
+
+    function insertSelectedOptionIntoInputBox() {
+      if (this.innerText === "All locations") {
+        this.parentElement.parentElement.previousElementSibling.value = "";
+        queryDBOnClick(this)
+      } else if (this.innerText === "All departments") {
+        this.parentElement.parentElement.previousElementSibling.value = "";
+        queryDBOnClick(this)
+      } else {
+        this.parentElement.parentElement.previousElementSibling.value = this.innerText;
+        queryDBOnClick(this)
+      }
+
+      return this.parentElement.parentElement.style.display = "none";
+    }
+
+    let queryInputBoxes = document.querySelectorAll('.query-input');
+    queryInputBoxes.forEach(inputBox => {
+      inputBox.addEventListener('keyup', queryDBOnKeyUp)
+    })
+
+    function queryDBOnClick(e) {
+      setTimeout(() => {
+        document.forms['query-form'].submit();
+
+      }, 1000)
+    }
+
+    function queryDBOnKeyUp() {
+      setTimeout(() => {
+        document.forms['query-form'].submit();
+      }, 1000)
+    }
+
+  </script>
+</body>
+
+</html>

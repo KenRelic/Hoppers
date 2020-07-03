@@ -1,0 +1,142 @@
+
+@media (max-width: 500px){
+	.hopper-logo {
+		display: block !important;
+		width: 35% !important;
+		max-width: 35% !important;
+		height: 26px !important ;
+		max-height: 26px !important;
+		margin-top: 6px;
+	
+	}
+
+}
+@media (max-width: 750px) {
+	#article {
+		padding: 0 2rem !important;
+	}
+	h1.heading {
+		font-size: 22px !important;
+		line-height: 27px;
+	}
+}
+
+@media (max-width: 1000px) {
+	/********  Header section     *********/
+	#header-section {
+		background-image: none;
+		background-color: #666;
+		width: 100%;
+		height: 400px;
+	}
+
+	.container-fluid {
+		padding: 1rem 1rem 0;
+	}
+	.nav {
+		display: flex;
+		justify-content: space-between;
+		order: 9999;
+	}
+	.flex-ul.responsive {
+		transform: translateX(0);
+	}
+	.fa-close {
+		display: none;
+	}
+
+	.flex-ul {
+		position: absolute;
+		top: 7rem;
+		left: 0;
+		right: 0;
+
+		width: 85vw;
+		height: 100vh;
+		background: #fff;
+		transform: translateX(-100%);
+		transition: 500ms;
+		z-index: 1;
+	}
+	.flex-ul ul {
+		display: flex;
+		flex-direction: column;
+		padding: 0;
+		min-width: 60%;
+		padding-top: 10px;
+		text-align: left;
+	}
+	.flex-ul ul li a {
+		display: inline-block;
+		padding: .5rem 2rem;
+		margin: 20px 0;
+		font-size: 1.2em;
+		opacity: 1;
+		color: #666;
+	}
+	.nav-icon {
+		display: block;
+	}
+	.back-btn-div {
+		order: 1;
+	}
+	.header-back-btn {
+		display: none;
+	}
+	.question-icon {
+		display: block;
+		color: #fff;
+		font-size: 25px;
+	}
+	.question-icon:hover {
+		color: #fff;
+	}
+	.hopper-logo {
+		display: block;
+		width: 20% ;
+		max-width: 20%;
+		height: 39px;
+		max-height: 39px;
+
+	}
+	h1.header-text {
+		padding: 0;
+		font-size: 2.5rem;
+		text-align: center;
+		margin: 5rem auto 0;
+		color: #fff;
+	}
+	.bunny {
+		display: none;
+	}
+
+	/*******   filters section   **********/
+	#filters-con {
+		width: 85%;
+		height: 250px;
+		top: 74%;
+	}
+	.filters-link {
+		display: none;
+	}
+	.in-filters .filters-btn {
+		width: 100%;
+	}
+	.pri {
+		margin-bottom: 2rem;
+		display: inline-block;
+	}
+
+	/******** article section ********/
+	#article {
+		margin: 14rem auto;
+		padding: 0 7rem;
+	}
+	h1.heading {
+		font-size: 33px;
+	}
+	#article p {
+		font-size: 16px;
+		line-height: 22px;
+	}
+}

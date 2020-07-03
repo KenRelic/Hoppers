@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <!-- Font awesome -->
+  <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- <script src="https://kit.fontawesome.com/c61f07fccb.js" crossorigin="anonymous"></script> -->
+  <title>Hopper Admin | Login</title>
+  <!-- <link rel="stylesheet" href="/stylesheet/careerList.css">
+    
+  <link rel="stylesheet" href="/stylesheet/careerListMediaQ.css"> -->
+  <link rel="icon" href="/images/careerListimages/favicon.ico">
+  <link rel="stylesheet" href="/css/admin.css">
+  <script src="/javascript/get-data.js"></script>
+</head>
+
+<body>
+  <!-- <i class="fa fa-caret-down btn-icon"></i> -->
+  <header class="container header-container">
+    <!-- <header class="masthead position-relative"> -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="nav-bar">
+      <div class="container p-2 px-lg-1">
+        <div class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive"
+          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" id="menu-icon">
+          <div class="icon"></div>
+        </div>
+        <a class="navbar-brand" href="/"><img src="/icons/logo.svg" alt="hopper logo" /></a>
+
+        <div class="collapse navbar-collapse w-100" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-lg-4">
+              <a class="nav-link nav-btn" href="/company" class="nav-btn">Company</a>
+              <!-- DASHBOARD SHOULD CONTAIN THE RECIEVED APLICATIONS -->
+            </li>
+            <li class="nav-item mr-lg-4">
+              <a class="nav-link nav-btn" href="/people" class="nav-btn">People</a>
+            </li>
+            <li class="nav-item mr-lg-4">
+              <a class="nav-link nav-btn" href="/career" class="nav-btn">Career</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="landing-banner container-fluid d-flex  justify-content-center align-items-center p-4">
+    <div class="col-lg-7 col-sm-12 text-sm-center text-lg-left">
+      <h1>Admin Login</h1>
+      <p>Add, update and delete expired jobs</p>
+    </div>
+    <div class="d-sm-none d-lg-flex col-lg-5 col-sm-0 banner-img" style="z-index: 0;">
+    </div>
+
+  </div>
+
+  <div class=" p-2 bg-white mt-4 form-wrapper">
+    <form action="/api/auth/login" method="post" class=" login-form">
+      <div class="form-elem">
+        <div class="input-group mb-4 mr-sm-2 mb-lg-0 position-relative">
+          <div class="w-100 h-100"><span class="label">Email</span></div>
+          <input type="email" name="email" class="form-control rounded-lg p-4">
+
+        </div>
+      </div>
+      <div class="form-elem">
+        <div class="input-group mb-4 mr-sm-2 mb-lg-0 position-relative">
+          <div class="w-100 h-100"><span class="label">Password</span></div>
+          <input type="password" name="password" class="form-control rounded-lg p-4">
+        </div>
+      </div>
+      <button class="text-center px-4 py-2 btn btn-primary rounded-lg login-btn">Log in</button>
+    </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

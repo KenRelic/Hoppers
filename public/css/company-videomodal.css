@@ -1,0 +1,33 @@
+.videomodal-img {
+	margin-left: 60px;
+	margin-top: 45px;
+	width: 94%;
+	height: 550px;
+}
+
+button {
+	color: black;
+}
+
+
+/* phone responsiveness **/
+
+@media all and (max-width: 670px) {
+	.videomodal-img {
+		
+		width: 115%;
+		height: 360px;
+		margin-left: 0px;
+	}	
+
+
+}
+
+@media all and (max-width: 350px) {
+	.videomodal-img {
+		
+		width: 120%;
+		height: 300px;
+		margin-left: 0px;
+	}	
+}

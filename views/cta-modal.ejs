@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Hopper</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<script type="text/javascript" src="/bootstrap/jquery.min.js"></script>
+	<script type="text/javascript" src="/bootstrap/popper.min.js"></script>
+	<script type="text/javascript" src="/bootstrap/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/css/admin.css">
+</head>
+
+<body>
+
+	<div id="modal-wrapper">
+		<span type="button" id="close-modal-btn" data-dismiss="alert">&times;</span>
+		<div id="modal">
+			<div></div>
+			<div id="send-app-section">
+				<img src="https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029063/Team-Mars/send_j18uhn.png"
+					alt="send-icon" class="send-icon">
+				<h3>Get the Hopper app and start planning your next trip</h3>
+				<p>Send a link to your phone, or download directly from <span class="red">hopper.com
+					</span>on your device</p>
+				<form action="/sendAppLink" method="post">
+
+					<div id="fill-number-section">
+						<div>
+							<label for="phone_number_input_box"> Phone number</label>
+							<input type="tel" placeholder="eg: 2348031234567" id="phone_number_input_box"
+								name="phone_number" minlength="13" maxlength="14" autocomplete="on">
+							<span id="error-msg">Invalid phone number</span>
+						</div>
+						<button type="submit" id="submit-btn" class="btn btn-primary"
+							onclick="return validateInput()">Send
+							link</button></a>
+					</div>
+				</form>
+
+			</div>
+			<div>
+				<div class="download-links">
+					<a href="#"><img
+							src="https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593028930/Team-Mars/appstore_g43k6v.png"
+							class="appstore-img"></a>
+					<a href="#"><img
+							src="https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029040/Team-Mars/playstore_ksjmeo.png"
+							class="playstore-img"></a>
+				</div>
+				<div>
+					<p>By clicking “Send Link”, you agree to the<span><a href='/termsofservice'>
+								Terms of Service </a></span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		const closeModalBtn = document.getElementById("close-modal-btn");
+		let inputBox = document.getElementById("phone_number_input_box");
+		let phoneNumberSentToPlaceholder = document.getElementById("phone-number-sent-to")
+
+
+		closeModalBtn.addEventListener('click', goBack);
+
+		function goBack() {
+			window.history.back();
+		}
+
+		// Validate  phone nummber input
+		function validateInput() {
+			let inputBox = document.getElementById("phone_number_input_box");
+			let testResult = (/[0-9]{13,14}/).test(inputBox.value);
+			if (!testResult) {
+				document.getElementById("error-msg").style.visibility = "visible";
+				return false;
+			}
+			document.getElementById("error-msg").style.visibility = "hidden";
+			//   localStorage.setItem("number", inputBox.value);
+			//   return showConfirmationModal(); //show the confirmation modal
+		}
+	</script>
+
+
+</body>
+
+</html>

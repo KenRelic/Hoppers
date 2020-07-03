@@ -1,0 +1,268 @@
+/* RESET */
+*,
+html,
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body .container {
+    padding: 5px !important;
+}
+
+
+
+#nav-bar {
+    transition: all 0.5s;
+    background-color: #ff6665 !important;
+    padding: 0.5em !important;
+    width: 100% !important;
+    margin: 0 auto;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.navbar-brand {
+    color: #fff !important;
+    font-weight: 500;
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 2rem;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+}
+
+.navbar-toggler-icon {
+    color: #fff !important;
+}
+
+
+
+.nav-btn:hover {
+    background-color: #fff !important;
+    border-color: #f63d3d !important;
+    box-shadow: 0 8px 10px #a3413e3c !important;
+    color: #f63d3d !important;
+}
+
+.nav-btn {
+    border-radius: 2em;
+    padding: 0.5em 1em;
+    background-color: transparent;
+}
+
+
+
+.landing-banner {
+    margin-top: 68px;
+    background-color: #ff6665;
+    height: 40vh;
+    width: 100vw;
+}
+.landing-banner h1{
+    font-size: 4em;
+    font-weight: 600;
+    color:#fff;
+}
+.landing-banner p{
+    font-size: 1.2em;
+    color:#fff;
+}
+.banner-img{
+    height: 100%;
+    background-image: url("../images/Career-Bunny-Full.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position:bottom;
+}
+
+.query-section > input{
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;;
+}
+
+.login-btn{
+    max-width: 200px !important;
+    min-width: 200px !important;
+    display: block !important;
+    background-color: #ff6665;
+    border: 2px solid #fff;
+    margin: 0 auto;
+}
+
+.login-btn:hover{
+    background-color: #fff;
+    border: 2px solid #f63d3d;
+    color:#f63d3d;
+}
+@media screen and (max-width:768px) {
+    .landing-banner {
+        align-items: center;
+        padding-bottom: 2em;
+
+    }
+    .landing-banner h1{
+        text-align: center;
+        font-size: 2.5em;
+    }
+    .landing-banner p{
+        font-size: 1em;
+        text-align: center;
+    }
+    .banner-img {
+        background-image: none !important;
+        width: 0;
+    }
+    .query-section{
+        margin-bottom: 15em !important;
+    }
+    .result-heading{
+        display: none !important;
+        
+    }
+    .no-match-img {
+        display: none;
+    }
+}
+
+
+
+#banner .px-md-4 {
+    margin: 0 4em !important;
+}
+
+.form-control::placeholder {
+    color: #b7b7b7;
+}
+
+#menu-icon{
+    border: none !important;
+    height: fit-content;
+    cursor: pointer;
+    height: 30px;
+}
+
+#menu-icon .icon{
+    height: 4px;
+    width: 30px;
+    background-color: #fff;
+    border-radius: 1em;
+}
+.icon::before,
+#menu-icon .icon::after{
+    position: absolute;
+    content: "";
+    height: 4px;
+    width: 30px;
+    background-color: #fff;
+    border-radius: 1em;
+    margin-top: 0.4em;
+}
+
+.input-group{
+    border:  1px solid rgb(92, 92, 92) !important;
+    margin-right: 0.2em !important;
+    padding: 0 !important;
+    border-radius: 8px;
+}
+
+.label{
+   position: absolute;
+   top: -0.7em;
+   left: 1em;
+   z-index: 100;
+   background-color: #fff;
+   padding: 0.05em 0.5em 0.05em 0.2em;
+
+    font-size: 0.8em;
+}
+
+#menu-icon .icon::after{
+    margin-top: 0.8em;
+}
+
+.jobs-result{
+    background-color: #eeeeee !important;
+}
+.no-match-msg {
+    margin-top: 3em;
+    align-items: center;
+    border: 1px dashed grey;
+}
+
+.no-match-img{
+    background-image: url("../images/not-found-bunny.png");
+    width: 20vw;
+    height: 25vw;
+    background-repeat: no-repeat;
+    background-position:right;
+    background-size: contain;
+    margin-top: -15vw;
+}
+
+.form-wrapper{
+    max-width:95%;
+    margin: 0 auto;
+}
+.form-elem{
+    margin-bottom: 2em;
+}
+@media (max-width: 1440px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl,
+    .landing-banner {
+        max-width: 100vw !important;
+        padding:3vw !important;
+    }
+    #nav-bar{
+        padding:0.4em 3vw !important;
+    }
+   
+}
+    @media (min-width: 1441px){
+        .container, .container-lg, .container-md, .container-sm, .container-xl,
+        .landing-banner {
+            max-width: 100vw !important;
+            padding:3vw !important;
+        }
+        #nav-bar{
+            padding:0.4em 3vw !important;
+        }
+        .form-wrapper{
+            max-width:50%;
+            margin: 0 auto;
+        }
+    }
+    @media (min-width: 768px){
+        .form-wrapper{
+            max-width:80%;
+            margin: 0 auto;
+        }
+    }
+
+    @media (min-width: 2000px){
+        .container, .container-lg, .container-md, .container-sm, .container-xl,
+        .landing-banner{
+            max-width: 80vw !important;
+            padding:3vw !important;
+        }
+        
+        #nav-bar{
+            padding:0.4em 3vw !important;
+            max-width:  80vw !important;
+        }
+        .form-wrapper{
+            max-width:1000px;
+            margin: 0 auto;
+        }
+    }

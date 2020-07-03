@@ -1,0 +1,970 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Import Font*/
+@font-face {
+  font-family: proximaNova;
+  src: url(../fonts/ProximaNova.otf);
+}
+
+@font-face {
+  font-family: MetaSerifPro;
+  src: url(../fonts/SourceSerifPro.otf);
+}
+
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+body {
+  font-family: proximaNova, sans-serif;
+}
+
+/* PRELOADER */
+
+.preloader {
+  height: 100vh;
+  position: relative;
+  background-color: #f6f6f6;
+}
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  background: transparent;
+  border: 3px solid #fa6866;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 150px;
+  color: #01aae4;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px #01aae4;
+  box-shadow: 0 0 20px rgb(250,104,102, 0.5);
+}
+
+.circle:before {
+  content: " ";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top: 3px solid #01aae4;
+  border-right: 3px solid #01aae4;
+  border-radius: 50%;
+  animation: animateCircle 2s linear infinite;
+}
+
+.preloader span {
+  display: block;
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 50%;
+  width: 50%;
+  height: 4px;
+  background: transparent;
+  transform-origin: left;
+  animation: animate 2s linear infinite;
+}
+.preloader span:before {
+  content: " ";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #01aae4;
+  top: -6px;
+  right: -8px;
+  box-shadow: 0 0 20px #01aae4;
+}
+
+@keyframes animateCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
+}
+
+/* LANDING PAGE */
+.landingpage-background {
+  background-image: url(https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029037/Team-Mars/Landscape-Mobile-min_aw3zbh.png);
+  background-size: cover;
+  background-position: 5% 50%, 84% 500%;
+  background-repeat: no-repeat;
+}
+
+.container {
+  /* background-color: #01aae4; */
+  padding: 3% 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.landingpage-title {
+  font-size: 22px;
+  color: #fff;
+}
+.landingpage-description {
+  font-size: 14px;
+}
+
+.landingpage-content .description {
+  color: #fff;
+}
+
+.description {
+  font-family: proximaNova, sans-serif;
+  margin: 1rem 0 2rem;
+  color: #878787;
+  text-align: center;
+  font-size: 20px;
+}
+
+.landingpage-top,
+.sub-nav {
+  display: flex;
+  width: 100%;
+  padding: 0 5%;
+  justify-content: space-between;
+}
+.hide {
+  display: none;
+}
+.landingpage-top,
+.sub-nav {
+  padding: 2% 8%;
+  z-index: 9;
+  /* position: fixed; */
+  top: 0;
+}
+.sub-nav {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 2%;
+  background: #fff;
+}
+
+.nav-btns,
+.appleicon {
+  display: none;
+}
+.landingpage-content {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  text-align: center;
+  width: 84%;
+  margin: 4rem 0 2rem;
+}
+
+.download-btn {
+  width: 100%;
+  padding: 3% 0;
+  border-radius: 0.5rem;
+  border: 1px solid #fff;
+  color: #01aae4;
+  background-color: #fff;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in;
+}
+.download-btn:hover {
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: #01aae4;
+}
+
+/* Know When to Buy page on The Homepage  */
+.title {
+  margin-top: 3rem;
+}
+
+.pre {
+  display: none;
+}
+
+.sectionii .container {
+  height: 100%;
+}
+
+.sectionii-bottom-images {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionii-bottom-images .image {
+  width: 20%;
+}
+.sectionii-bottom-images img {
+  width: 100%;
+  height: 100%;
+}
+
+.sectionii-bottom-center {
+  margin: 0 -7% 0 -9%;
+  z-index: 3;
+  height: 100%;
+}
+
+.sectionii-bottom-second {
+  margin-left: -5%;
+  height: 80%;
+}
+
+.sectionii-bottom-fourth {
+  margin-right: -1%;
+  height: 80%;
+}
+
+.sectionii-bottom-first {
+  height: 60%;
+}
+.sectionii-bottom-fifth {
+  height: 50%;
+}
+/* section iii */
+
+.sectioniii-images {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 10px;
+  justify-content: center;
+  height: 75%;
+}
+.sectioniii-image {
+  width: 30%;
+  padding: 1.2rem 0.7rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0px 2.89872px 11.5949px rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* SECTION IV */
+
+.sectioniv {
+  background: url(https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029080/Team-Mars/sectioniv-bg_pcj74e.jpg);
+  background-repeat: no-repeat;
+  background-size: 120%;
+  background-position: bottom;
+  height: 80vh;
+  position: relative;
+}
+
+.sectioniv-link {
+  text-decoration: underline;
+  color: #01aae4;
+  margin-top: 2rem;
+}
+
+.sectionv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 0;
+}
+.sectionv .title {
+  text-align: center;
+  width: 96%;
+}
+.sectionv-title2 {
+  display: none;
+}
+.sectionv-title1 {
+  display: block;
+}
+.sectionv-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swipper-wrapper {
+  display: flex;
+}
+.swiper-container {
+  width: 90%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+}
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 275px;
+  height: 300px;
+}
+.sectionv-download-btn {
+  background-color: #01aae4;
+  color: #fff;
+  width: 275px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  margin: 1rem auto;
+  padding: 0.5rem 0;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+.sectionv-download-btn:hover {
+  cursor: pointer;
+  border: 1px solid #01aae4;
+  background-color: #fff;
+  color: #01aae4;
+}
+.sectionv-download-btn:active {
+  box-shadow: none;
+  margin-top: 20px;
+}
+.sectionv-download-info {
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* FOOTER */
+.footer-large {
+  display: none;
+  padding-bottom: 2rem;
+}
+.footer-mobile {
+  display: flex;
+}
+.footer-container {
+  width: 100vw;
+  padding: 5%;
+}
+.footer-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-mobile-options,
+.footer-mobile .option-container,
+.footer-mobile .language,
+.footer-mobile .social,
+hr {
+  width: 100%;
+  color: #505050;
+  margin-bottom: 2rem;
+}
+
+.footer-mobile .hooper,
+.footer-mobile .company,
+.footer-mobile .people,
+.footer-mobile .support,
+.footer-mobile .media,
+.footer-mobile .social {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #878787;
+}
+.footer-mobile .company div {
+  display: flex;
+  align-items: center;
+}
+.footer-mobile .plus-btn {
+  font-weight: 900;
+  padding: 0 0.3rem;
+  transition: 0.5s;
+}
+.footer-mobile .plus-btn:hover {
+  cursor: pointer;
+  color: #fa6866;
+}
+
+.footer-mobile .company .notification {
+  font-size: 0.7rem;
+  background-color: #fa6866;
+  padding: 0 0.5rem;
+  border-radius: 8px;
+  color: #fff;
+  margin-left: 1rem;
+}
+
+.footer-mobile .social {
+  border-bottom: none;
+  margin-bottom: 2rem;
+}
+.footer-mobile .language select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+.footer-mobile .terms {
+  text-align: center;
+  border-bottom: 1px solid #505050;
+  margin-bottom: 2rem;
+  align-self: center;
+}
+.footer-mobile .footer-bottom {
+  align-self: center;
+  margin: -1rem 0 1rem;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.footer-mobile hr {
+  color: #505050;
+}
+.footer-mobile .option-container .hide {
+  display: none;
+}
+.footer-mobile .option-container a {
+  display: block;
+  margin: 0.3rem 0 0.3rem 0.3rem;
+  color: #aaa;
+}
+.footer-mobile .option-container a:active {
+  color: #fa6866;
+}
+/* RESPONSIVENESS */
+@media only screen and (min-width: 768px) {
+  .container {
+    /* background-color: #01aae4; */
+    padding: 0 8%;
+  }
+  .landingpage-content {
+    margin-top: 30%;
+    width: 65%;
+  }
+
+  .landingpage-background {
+    background-image: url(https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029037/Team-Mars/Plane_s9illx.png),
+      url(https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029045/Team-Mars/background_mt0cqg.png);
+    background-size: 30%, 220%;
+    background-position: 90% 55%, 88% 50%;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+
+  .landingpage-top,
+  .sub-nav {
+    padding: 2% 8%;
+    z-index: 9;
+    /* position: fixed; */
+  }
+
+  .sub-nav {
+    padding: 0.5% 8%;
+  }
+  .landingpage-description {
+    text-align: center;
+  }
+  .landingpage-description {
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+  }
+  .landingpage-title {
+    text-align: center;
+    margin-top: 0;
+    color: #000;
+  }
+  .description {
+    width: 64%;
+    text-align: left;
+  }
+  .landingpage-content .description {
+    font-size: 14px;
+    text-align: center;
+    width: auto;
+    color: #878787;
+  }
+  .nav-btns,
+  .appleicon {
+    display: none;
+  }
+  .download-btn {
+    width: 60%;
+    border: 1px solid #01aae4;
+    color: #fff;
+    background-color: #01aae4;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in;
+  }
+  .download-btn:hover {
+    color: #01aae4;
+    border: 1px solid #01aae4;
+    background-color: #fff;
+  }
+  .title {
+    text-align: left;
+    width: 64%;
+  }
+
+  /* SECTION III */
+  .sectioniii-images {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sectioniii-image {
+    padding: 2rem 1.5rem;
+    margin-top: 1rem;
+    width: 16%;
+  }
+  /* SECTIONiii */
+  .pre {
+    font-size: 12px;
+    color: #878787;
+    margin-top: 8rem;
+    display: block;
+    text-align: left;
+    width: 64%;
+    text-transform: uppercase;
+  }
+  .sectionii-images .image {
+    width: 35%;
+    background-size: 120% 100%;
+  }
+  .sectionii-secondimage {
+    width: 30%;
+    background-size: 80% 100%;
+    margin: 0 -8% 0 -10%;
+  }
+  .sectionii .sectionii-bottom-first,
+  .sectionii-bottom-second,
+  .sectionii-bottom-fifth {
+    display: block;
+  }
+  .sectionii-firstimagec {
+    display: none;
+  }
+  .sectionii-images .image {
+    width: 50%;
+  }
+
+  /* SECTION IV */
+  .sectioniv {
+    background: url(https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029061/Team-Mars/desk_vjlfdd.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  }
+  .sectioniv .container {
+    margin-top: 4rem;
+  }
+
+  /* SECTION V */
+  .sectionv-title1 {
+    display: none;
+  }
+  .sectionv-title2 {
+    display: block;
+  }
+
+  .sectionv .pre {
+    width: 42%;
+  }
+  .sectionv .title {
+    text-align: left;
+    width: 42%;
+  }
+  .sectionv-download-btn {
+    width: 17%;
+  }
+  .pre {
+    margin-top: 4rem;
+  }
+  .title {
+    margin-top: 0;
+  }
+  /* FOOTER */
+  .footer-mobile {
+    display: none;
+  }
+
+  .footer-large {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+  .footer-large-first,
+  .footer-large-second {
+    color: #878787;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .footer-large-first .option-title,
+  .footer-large-second .options {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    z-index: 2;
+  }
+  /* .footer-large-first .option-title {
+    border-bottom: 1px solid #f6f6f6;
+  } */
+  .footer-large .right {
+    width: 65%;
+  }
+  .footer-large hr {
+    color: #f6f6f6;
+    position: absolute;
+    top: 16%;
+  }
+  .footer-large .left {
+    width: 35%;
+  }
+  .footer-large-first .option-title .option,
+  .footer-large-second .options div {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-large-second .options div {
+    font-size: 12px;
+  }
+  .footer-large-second .options {
+    height: 100%;
+  }
+  .footer-large-second .options a {
+    margin-top: 0.5rem;
+    color: #878787;
+  }
+  .footer-large-second .options a:hover {
+    color: #fa6866;
+  }
+  .footer-large-first .option-title a {
+    align-self: flex-start;
+    padding: 0.3rem 0;
+    color: #878787;
+    font-weight: bold;
+  }
+  .footer-large-first .option-title a:hover {
+    cursor: pointer;
+    border-bottom: 2px solid #505050;
+  }
+  .footer-large-first .option-title a:active {
+    border-bottom: 2px solid #505050;
+  }
+  .selected {
+    border-bottom: 2px solid #505050;
+  }
+  .footer-large .language select {
+    border: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #505050;
+    font-weight: 800;
+    margin-left: 0.5rem;
+  }
+  .footer-large .options {
+    display: flex;
+  }
+  .footer-large-social {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .landingpage {
+    height: 100vh;
+  }
+  .landingpage-background {
+    background-image: url(https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029037/Team-Mars/Plane_s9illx.png),
+      url(https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029051/Team-Mars/background_3x_d7mfut.png);
+    background-size: 15%, 120% 135%;
+    background-position: 65% center, 70% 60%;
+    height: 100%;
+  }
+  .landingpage .description {
+    text-align: left;
+  }
+  .container {
+    height: 100%;
+  }
+
+  .hamburgermenu,
+  .landingpage-top .support,
+  .sub-nav .support,
+  .hide {
+    display: none;
+  }
+  .nav-btns {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    /* line-height: 28px; */
+  }
+  .nav {
+    display: flex;
+    width: 60%;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .sub-nav .nav {
+    width: 65%;
+  }
+  .sub-nav .nav-btns {
+    width: 80%;
+  }
+
+  .nav-link {
+    color: #fff;
+    padding: 0.5rem 1rem;
+  }
+  .nav-link:hover {
+    border: 1px solid #fff;
+    border-radius: 8px;
+  }
+  .sub-nav .nav-link,
+  .sub-nav .divide {
+    color: #878787;
+  }
+  .sub-nav .divide {
+    margin-left: 15%;
+  }
+
+  .sub-nav .sendapp-btn {
+    color: #01aae4;
+    border: none;
+  }
+  .sub-nav .sendapp-btn:hover {
+    border: 1px solid #01aae4;
+  }
+  .sendapp-btn {
+    border: 1px solid #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+  }
+  .sendapp-btn:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #30c1d2;
+    border-color: 1px solid #30c1d2;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+  }
+  .sendapp-btn:active {
+    margin-top: 8px;
+    box-shadow: none;
+  }
+  .sendapp-btn img {
+    margin-left: 0.5rem;
+  }
+  .landingpage-content {
+    align-self: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    width: 40%;
+    margin: 0;
+    height: 100%;
+    justify-content: center;
+  }
+  .landingpage-title {
+    font-size: 2.5rem;
+    text-align: left;
+  }
+
+  .landingpage-description {
+    width: 100%;
+  }
+  .landingpage-description {
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+  }
+  .appleicon {
+    display: block;
+    margin: 8rem 0 1rem;
+  }
+  .download-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* SECTION III */
+  .sectioniii-image {
+    padding: 2rem 1.5rem;
+    margin-top: 1rem;
+    width: auto;
+  }
+  /* section v */
+  .sectionv .laptop {
+    display: flex;
+    justify-content: space-around;
+    height: 500px;
+    align-items: center;
+    margin: 2rem 0;
+    position: relative;
+    padding: 0 1%;
+  }
+  .sectionv .swiper-slide {
+    width: 18.5%;
+    height: 80%;
+  }
+  .sectionv .agege {
+    display: none;
+  }
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+  }
+  .location-tag {
+    position: absolute;
+    width: 18.5%;
+    line-height: 2rem;
+    font-size: 2rem;
+    text-align: center;
+    color: #fff;
+  }
+  .paris .location-tag {
+    top: calc(40% - 2rem);
+  }
+  .cario .location-tag {
+    top: calc(52.6% - 2rem);
+  }
+  .new-york .location-tag {
+    bottom: calc(40% - 2rem);
+  }
+
+  .cancun .location-tag {
+    top: calc(50% - 2rem);
+  }
+  .hong-kong .location-tag,
+  .new-york .location-tag {
+    top: calc(60% - 2rem);
+  }
+  .sectionv .paris {
+    align-self: flex-start;
+  }
+  .sectionv .cario {
+    margin-top: 2.6%;
+  }
+  .sectionv .new-york,
+  .sectionv .hong-kong {
+    align-self: flex-end;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .landingpage-content {
+    width: 34.5%;
+  }
+}
+@media only screen and (min-width: 2560px) {
+  .landingpage-title {
+    font-size: 5rem;
+  }
+  .landingpage-content {
+    width: 30.5%;
+  }
+}
+
+
+/* Hamburger */
+/* Generals */
+.grid,
+.grid-large,
+.grid-large-temp {
+  display: grid;
+}
+
+.flex,
+.flex-small,
+.flex-large {
+  display: flex
+}
+
+.small-only {
+  display: none;
+}
+
+svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* Modal */
+#modal {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: -110vh;
+  left: 0;
+  z-index: 10;
+  transition: 0.5s ease;
+}
+#modal .close svg {
+  fill: #878787;
+  width: 15px;
+  height: 15px;
+  float: left;
+  position: relative;
+  top: -2em;
+}
+
+#modal .help svg {
+  fill: #878787;
+  width: 20px;
+  height: 20px;
+  float: right;
+  position: relative;
+  top: -1.5em;
+  
+}
+
+#modal .wrapper {
+  width: 100%;
+  background: #fff;
+  color: #fff;
+  padding: 3em;
+  height: 100vh;
+}
+#modal nav {
+  margin-top: 2em;
+}
+
+#modal nav ul {
+  flex-direction: column;
+  justify-content: center;
+}
+#modal li {
+  display: block;
+  list-style: none;
+  font-size: 1em;
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+#modal .logo {
+  text-align: center;
+}

@@ -1,0 +1,336 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+	font-family: Quicksand;
+	width: 1170;
+
+}
+
+
+/* Change the white to any color*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+.center {
+	text-align: center;
+}
+
+.send-icon {
+	margin-left: 274px;
+	margin-top: 220px;
+	margin-bottom: 40px;
+}
+
+.font-type1 {
+	font-weight: bolder;
+	font-size: 22px;
+	line-height: 27px;
+	color: #505050;
+	width: 58%;
+	margin-left: 130px;
+}
+
+.font-type2 {
+	font-size: 16px;
+	line-height: 22px;
+	color: #878787;
+	width: 58%;
+	font-weight: 450;
+	margin-left: 130px;
+	margin-bottom: 34px;
+}
+
+.red {
+	color: red;
+}
+
+.input:focus {
+	outline: none;
+}
+
+input {
+	width: 40%;
+	border-radius: 8px;
+	border: 1px solid gainsboro;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	font-size: 14px;
+	line-height: 20px;
+	margin-left: 90px;
+
+
+}
+
+button:focus {
+	outline: none;
+}
+
+.button {
+	width: 34%;
+	border-radius: 8px;
+	color: white;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	background-color: #01AAE4;
+	border: none;
+	text-align: center;
+	font-size: 14px;
+	line-height: 20px;
+	margin-right: 10px;	
+}
+
+.button:hover {
+	background-color: #1a53ff;
+}
+
+.images {
+	margin-left: 160px;
+	margin-top: 200px;
+	margin-bottom: 30px;
+}
+
+.playstore-img {
+	margin-left: 60px;
+}
+
+.send-text {
+	color: #808080;
+	font-size: 14px;
+	line-height: 19px;
+	margin-left: 40px;
+}
+
+
+
+
+
+
+/* phone responsiveness **/
+
+@media all and (max-width: 340px) {
+	body {
+		overflow-x: hidden;
+		width: 100%;
+	}
+
+	/* .close {
+		
+	} */
+
+	.send-icon {
+	margin-left: 120px;
+	margin-top: 180px;
+	
+	
+	}
+
+	.font-type1 {
+	font-size: 15px;
+	width: 110%;
+	margin-left: 10px;
+	}
+
+.font-type2 {
+	font-size: 13px;
+	line-height: 20px;
+	width: 110%;
+	margin-left: 10px;
+	}
+
+	input {
+	width: 100%;
+	border-radius: 10px;
+	padding-left: 0px;
+	margin-left: 20px;
+	text-align: center;
+	margin-bottom: 10px;
+
+
+	}
+
+
+.button {
+	width: 101%;
+	border-radius: 10px;
+	margin-right: 0px;
+	margin-left: 20px;	
+	}
+
+	.images {
+		margin-left: 0px;
+		margin-top: 150px;
+		margin-bottom: 30px;
+	}
+
+	.appstore-img {
+		margin-left: 70px;
+		margin-bottom: 20px;
+		
+	}
+
+	.playstore-img {
+		margin-left: 70px;
+		margin-bottom: 10px;
+		
+	}
+
+
+
+}
+
+@media all and (max-width: 769px) {
+
+	body {
+		overflow-x: hidden;
+		width: 100%;
+	}
+
+	.close {
+		
+	}
+
+	.send-icon {
+	margin-left: 50px;
+	margin-top: 180px;
+	
+	}
+
+	.font-type1 {
+	font-size: 15px;
+	width: 110%;
+	margin-left: 10px;
+	}
+
+.font-type2 {
+	font-size: 13px;
+	line-height: 20px;
+	width: 110%;
+	margin-left: 10px;
+	}
+
+	input {
+	width: 100%;
+	border-radius: 10px;
+	padding-left: 0px;
+	margin-left: 20px;
+	text-align: center;
+	margin-bottom: 10px;
+
+
+	}
+
+
+.button {
+	width: 101%;
+	border-radius: 10px;
+	margin-right: 0px;
+	margin-left: 20px;	
+	}
+
+	.images {
+		margin-left: 0px;
+		margin-top: 150px;
+		margin-bottom: 30px;
+	}
+
+	.appstore-img {
+		margin-left: 70px;
+		margin-bottom: 20px;
+		position: absolute;
+		left: -6px;
+		top: 550px;
+		
+	}
+
+	.playstore-img {
+		position: absolute;
+		left: -7px;
+		top: 590px;
+		margin-left: 70px;
+		margin-bottom: 10px;
+		
+	}
+
+		
+}
+
+@media all and (max-width: 1040px) {
+
+	body {
+		overflow-x: hidden;
+		width: 100%;
+	}
+
+	.close {
+		
+	}
+
+	.send-icon {
+	margin-left: 240px;
+	margin-top: 180px;
+	
+	}
+
+	.font-type1 {
+	font-size: 15px;
+	width: 110%;
+	margin-left: 10px;
+	}
+
+.font-type2 {
+	font-size: 13px;
+	line-height: 20px;
+	width: 110%;
+	margin-left: 10px;
+	}
+
+	input {
+	width: 100%;
+	border-radius: 10px;
+	padding-left: 0px;
+	margin-left: 20px;
+	text-align: center;
+	margin-bottom: 10px;
+
+
+	}
+
+
+.button {
+	width: 101%;
+	border-radius: 10px;
+	margin-right: 0px;
+	margin-left: 20px;	
+	}
+
+	.images {
+		margin-left: 0px;
+		margin-top: 150px;
+		margin-bottom: 30px;
+	}
+
+	.appstore-img {
+		margin-left: 90px;
+		margin-bottom: 20px;
+		
+	}
+
+	.playstore-img {
+		margin-left: 90px;
+		margin-bottom: 10px;
+		
+	}
+
+	
+}
+

@@ -1,0 +1,115 @@
+@media all and (max-width: 768px) {
+
+	* {
+		overflow-x: hidden;
+		
+		
+	}
+
+	body {
+		justify-content: center;
+
+
+	}
+
+	jobs-header {
+		height: 500px;
+		width: 50%;
+	}
+
+	
+	.bunny-img {
+		display: none;
+	}
+
+	.application-section {
+		width: 200%;
+		height: 1000px;
+	}
+
+	.application-section h3 {
+		font-size: 15px;
+		margin-left: 15px;
+		width: 50%;
+		background-color: #F9F9F9;
+		margin-bottom: -10px;
+
+	}
+
+	.application-section h2 {
+		height: 120%;
+	}
+
+	.text {
+		font-size: 10px;
+
+	}	
+
+
+	.margin {
+		margin-top: 10px;
+	}
+
+
+	form {
+		margin-left: 15px;
+		width: 100%;
+	}
+
+	.resume {
+		
+		font-size: 10px;
+		width: 31%;
+		text-align: center;
+		margin-left: 35px;
+		margin-bottom: -10px;
+	}
+
+
+	.linkedin-btn {
+		font-size: 10px;
+		margin-left: 17px;
+		width: 31%;
+		text-align: center;
+	}
+
+	.profile-text {
+		display: none;
+	}
+
+	.input-box {
+		padding: 0px 0px;
+	}	
+
+	.input-name {
+		margin-left: 36px;
+
+	}
+
+	.input-email {
+		margin-left: 57px;
+	}
+
+	.input-phone {
+		margin-left: 58px;
+
+	}
+
+	.input-company {
+
+		margin-left: 6px;
+
+	}
+
+	.submit-btn {
+		width: 41%;
+		margin-left: 20px;
+		font-size: 11px;
+		
+	}
+
+
+
+
+
+ }

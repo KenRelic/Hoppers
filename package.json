@@ -1,0 +1,26 @@
+{
+  "name": "teamapi",
+  "version": "1.0.0",
+  "description": "TEAM MARS API for CRUD OPERATIONS",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "SIMEON KENNETH",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.19",
+    "nexmo": "^2.8.0",
+    "node-localstorage": "^2.1.6",
+    "nodemon": "^2.0.4"
+  }
+}

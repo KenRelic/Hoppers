@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jobs</title>
+
+    
+    
+
+    <link rel="stylesheet" type="text/css" href="/fontawesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<script type="text/javascript" src="/bootstrap/jquery.min.js"></script>
+	<script type="text/javascript" src="/bootstrap/popper.min.js"></script>
+	<script type="text/javascript" src="/bootstrap/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="/css/apply-job.css">
+	<link rel="stylesheet" href="/css/apply-job-responsive.css">
+</head>
+
+<body>
+
+	<header class="container">
+		<div class="row job-header">
+
+			<div class="col-sm-12 col-md-9">
+
+			 	<span><img class="menu-icon" src="https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029039/Team-Mars/menu_rkqfe1.png"></span>
+			 	<a href="/"><img  class="hopper-logo" src="https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593029030/Team-Mars/Hopper-Logo_lpeexs.png" alt="hopper-image"></a><span><img class="help-icon" src="images/jobspage/help.png"></span>
+
+			   	<h2><%= jobApplyingFor.position %></h2>
+			   	<h3><%= jobApplyingFor.location %> / <%= jobApplyingFor.department %></h3> 		
+			</div>
+
+			<div class=" col-md-3">
+				<img  class="bunny-img" src="https://res.cloudinary.com/dw4rdnuqh/image/upload/v1593028932/Team-Mars/bunny_htcpfz.png" alt="hopper-image">
+			</div>	
+
+		</div>
+	</header>
+
+	<section class="container-fluid" >
+		<div class="row application-section">
+			<div class="col-md-8 col-sm-12">
+				
+		      <h3>SUBMIT YOUR APPLICATION</h3>
+
+		      <form method="post" action="/submit-application" target="_blank">
+
+					<div class="attach-file"> <span class="text resume-text">Resume/CV</span> <label for="cv" class= 'resume'><i class="fas fa-paperclip"></i>ATTACH RESUME/CV</label>
+					<input type="file" id="myfile" name="cv"></div>
+
+					<div class="margin">
+						<span class="text">LinkedIn Profile</span> 
+						<a href='https://www.linkedin.com' target="_blank"><button class="position linkedin-btn"><i class="fab fa-linkedin"></i>APPLY WITH LINKEDIN</button></a> 
+						<span class="profile-text">Your full LinkedIn profile will <br>be shared. 
+						<a href = "#" style="text-decoration: underline; color: dimgray;">Learn more</a></span>
+					</div>
+
+					<div class="margin"><span class="text"><label for="fullname">Full name <span class="red">*</span></label></span>
+					<input type="text" class="input-name input-box" id="fullname" name="fullname"><br></div>
+
+					<div class="margin"><span class="text"><label for="email">Email <span class="red">*</span></label></span>
+					<input type="email" class="input-email input-box" id="email" name="email"><br></div>
+
+					<div class="margin"><span class="text"><label for="phone">Phone</label></span>
+					<input type="tel" class="input-phone input-box" id="phone" name="phone_number"><br></div>
+
+					<div class="margin"><span class="text"><label for="company"> Current Company</label></span>
+					<input type="text" class="input-company input-box" id="company" name="current_company"><br></div>
+
+					<div><input type="submit" class= "submit-btn" value="Submit application"></div>		      	
+		      	</form>
+
+		      
+			</div>
+
+			<div class="col-md-4"></div>
+			
+		</div>
+		
+	</section>
+
+</body>
+</html>
