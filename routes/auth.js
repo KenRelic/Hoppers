@@ -277,11 +277,14 @@ router.post('/job/update/:_id', authUser, async (req, res) => {
                 roleRequirementObj[`${Object.keys(roleRequirementObj).length + 1}`] = roleReq.replace(/\r\n/gi, "").trim();
             }
         })
-        perks.split(/--/gi).forEach(perk => {
-            if (perk.trim() !== "") {
-                perksObj[`${Object.keys(perksObj).length + 1}`] = perk.replace(/\r\n/gi, "").trim();
-            }
-        })
+        if (perks) {
+            perks.split(/--/gi).forEach(perk => {
+                if (perk.trim() !== "") {
+                    perksObj[`${Object.keys(perksObj).length + 1}`] = perk.replace(/\r\n/gi, "").trim();
+                }
+            })
+        }
+
 
         const updatedJob = await JobOpening.updateOne(
             result,
