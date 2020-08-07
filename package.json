@@ -21,6 +21,7 @@
     "mongoose": "^5.9.19",
     "nexmo": "^2.8.0",
     "node-localstorage": "^2.1.6",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "lodash": ">=4.17.19"
   }
 }
